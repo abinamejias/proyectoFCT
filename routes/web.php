@@ -17,6 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/Inicio', function () {
+    return view('Inicio');
+});
+
+Route::get('/Biblioteca', function () {
+    return view('pagina');
+});
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
