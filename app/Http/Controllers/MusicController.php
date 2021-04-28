@@ -14,11 +14,14 @@ class MusicController extends Controller
      */
     public function index()
     {
-        $topAlbums = Http::get('http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=disco&api_key=915e43bd2c345fdb1aa3e2c00aca0c03&format=json')->json();
+        $topAlbums = Http::get('http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=disco&api_key=915e43bd2c345fdb1aa3e2c00aca0c03&format=json')
+        ->json()['albums']['album'];
 
         dump($topAlbums);
         
-        return view('index');
+        return view('index', [
+            'topAlbums' => $topAlbums,
+        ]);
     }
 
     /**
