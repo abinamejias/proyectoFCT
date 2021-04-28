@@ -12,7 +12,6 @@
                 <div class="card-body">
                 <h5 class="card-title" style = "color:white;">{{ $album['name'] }}</h5>
                 <p class="card-text" style = "color:white;">{{ $album['artist']['name'] }}</p>
-                <a href="#" class="btn btn-primary">¡Escucha ya!</a>
                 </div>
                 </div>
             </div>

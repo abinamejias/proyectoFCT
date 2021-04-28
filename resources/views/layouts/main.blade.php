@@ -12,18 +12,21 @@
 
         <link rel="stylesheet" href="/css/main.css">
         <livewire:styles />
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> 
 
 
     </head>
-        <nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container bg-dark fixed top">
+        <nav class="navbar navbar-dark bg-dark z-index:1">
             <a class="navbar-brand" style="color:rgb(255,255,255)" href="http://localhost:8000/Inicio?">SPOTIFY DEL CHINO</a>
-            <form class="form-inline">
-                <livewire:search-dropdown>
-            </form>
             <form>
                 <a class="btn btn-outline-success my-2 my-sm-2 " href="http://localhost:8000/Registro" role="button">SIGN UP</a>
             </form>
         </nav>
+        <form>
+                <livewire:search-dropdown>
+        </form>
+    </div>
     @yield('content')
     <livewire:scripts/>
     </body>

@@ -22,6 +22,10 @@ Route::get('/Inicio', function () {
     return view('Inicio');
 });
 
+Route::get('/show', function () {
+    return view('show');
+});
+
 Route::get('/index', function () {
     return view('index');
 });
@@ -60,4 +64,3 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/index', [MusicController::class, 'index'])->name('music.index');
-
