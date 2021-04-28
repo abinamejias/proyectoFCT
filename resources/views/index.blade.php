@@ -1,30 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Laravel</title>
+@extends('layouts.main')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link href="/css/main.css" rel="stylesheet">
-
-        <link rel="stylesheet" href="/css/main.css">
-
-
-    </head>
-    <body style="background: linear-gradient(90deg, rgba(40,38,83,1) 34%, rgba(51,51,116,1) 75%, rgba(53,88,124,1) 100%);">
-        <nav class="navbar navbar-dark bg-dark fixed-top">
-            <a class="navbar-brand" style="color:rgb(255,255,255)" href="http://localhost:8000/Inicio?">SPOTIFY DEL CHINO</a>
-            <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-2" type="submit">Search</button>
-            </form>
-            <form>
-                <a class="btn btn-outline-success my-2 my-sm-2 " href="http://localhost:8000/Registro" role="button">SING UP</a>
-            </form>
-        </nav>
+@section('content')
+<body style="background: linear-gradient(90deg, rgba(40,38,83,1) 34%, rgba(51,51,116,1) 75%, rgba(53,88,124,1) 100%);">
     <div class="container" style = "margin-top: 100px;">
     <center><h2 style = "margin-bottom: 35px; color:white;">Explora los géneros más escuchados:</h2></center>
         <div class="row">
@@ -73,6 +50,4 @@
         <div class="container" style = "margin-top: 50px;">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/G0JKdFjWkLA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
-    @yield('content')
-    </body>
-</html>
+@endsection

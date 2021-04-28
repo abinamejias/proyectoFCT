@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MusicController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,31 @@ Route::get('/Inicio', function () {
     return view('Inicio');
 });
 
+Route::get('/index', function () {
+    return view('index');
+});
+
+Route::get('/Registro', function () {
+    return view('Registro');
+});
+
+//Playlist oficiales
+Route::get('/NewPop', function () {
+    return view('NewPop');
+});
+
+Route::get('/R&B', function () {
+    return view('R&B');
+});
+
+Route::get('/Indie', function () {
+    return view('Indie');
+});
+
+Route::get('/HipHop', function () {
+    return view('HipHop');
+});
+
 Route::get('/Biblioteca', function () {
     return view('pagina');
 });
@@ -28,3 +54,9 @@ Route::get('/Biblioteca', function () {
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/index', [MusicController::class, 'index'])->name('music.index');
