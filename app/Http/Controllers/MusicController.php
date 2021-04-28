@@ -17,10 +17,10 @@ class MusicController extends Controller
         $topAlbums = Http::get('http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=disco&api_key=915e43bd2c345fdb1aa3e2c00aca0c03&format=json')
         ->json()['albums']['album'];
 
-        dump($topAlbums);
+        /*dump($topAlbums);*/
         
         return view('index', [
-            'topAlbums' => $topAlbums,
+            'topAlbums' => collect($topAlbums)->take(12),
         ]);
     }
 

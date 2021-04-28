@@ -11,19 +11,20 @@
         <link href="/css/main.css" rel="stylesheet">
 
         <link rel="stylesheet" href="/css/main.css">
+        <livewire:styles />
 
 
     </head>
         <nav class="navbar navbar-dark bg-dark fixed-top">
             <a class="navbar-brand" style="color:rgb(255,255,255)" href="http://localhost:8000/Inicio?">SPOTIFY DEL CHINO</a>
             <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-2" type="submit">Search</button>
+                <livewire:search-dropdown>
             </form>
             <form>
-                <a class="btn btn-outline-success my-2 my-sm-2 " href="http://localhost:8000/Registro" role="button">SING UP</a>
+                <a class="btn btn-outline-success my-2 my-sm-2 " href="http://localhost:8000/Registro" role="button">SIGN UP</a>
             </form>
         </nav>
     @yield('content')
+    <livewire:scripts/>
     </body>
 </html>
