@@ -7,10 +7,10 @@
         <div class="container mx-auto px-4 py-16 flex flex-col md:flex-row">
             <div class="row">
                 <div class="col">
-                <img src="#">
+                <img src="{{ $album['album']['image'][5]['#text'] }}">
                 </div>
                 <div class="col">
-                    <p style="color:white;">Details here</p>
+                    <p style="color:white;">{{ $album['album']['name'] }}</p>
                 </div>
             </div>
         </div>

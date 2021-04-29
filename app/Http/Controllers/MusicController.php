@@ -51,9 +51,17 @@ class MusicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($album)
     {
-        //
+        $artist = 'BTS';
+        $album = Http::get('http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=915e43bd2c345fdb1aa3e2c00aca0c03&artist='.$artist.'&album='.$album.'&format=json')
+        ->json();
+
+        dump($album);
+
+        return view('show', [
+            'album' => ($album),
+        ]);
     }
 
     /**
@@ -64,7 +72,7 @@ class MusicController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**

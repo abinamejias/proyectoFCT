@@ -64,3 +64,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/index', [MusicController::class, 'index'])->name('music.index');
+Route::get('/music/{album}/album', [MusicController::class, 'show'])->name('music.show');

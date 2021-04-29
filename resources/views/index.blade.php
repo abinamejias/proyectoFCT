@@ -8,9 +8,9 @@
             @foreach ($topAlbums as $album)
             <div class="col-3">
                 <div class="card bg-dark">
-                <img src="{{ $album['image'][3]['#text'] }}" class="card-img-top" alt="...">
+                <a href="{{ route('music.show', $album['name']) }}"><img src="{{ $album['image'][3]['#text'] }}" class="card-img-top" alt="..."></a>
                 <div class="card-body">
-                <h5 class="card-title" style = "color:white;">{{ $album['name'] }}</h5>
+                <a href="{{ route('music.show', $album['name'] )}}"><h5 class="card-title" style = "color:white;">{{ $album['name'] }}</h5></a>
                 <p class="card-text" style = "color:white;">{{ $album['artist']['name'] }}</p>
                 </div>
                 </div>
