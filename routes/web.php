@@ -18,10 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/Inicio', function () {
-    return view('Inicio');
-});
-
 Route::get('/show', function () {
     return view('show');
 });
@@ -64,4 +60,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/index', [MusicController::class, 'index'])->name('music.index');
-Route::get('/music/{album}/album', [MusicController::class, 'show'])->name('music.show');
+Route::get('/music/{album}/{artist}', [MusicController::class, 'show'])->name('music.show');

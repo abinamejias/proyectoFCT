@@ -25,7 +25,7 @@
         <div>
                 @foreach ($searchResults as $result)
                 <div style="margin-top:10px; z-index:1">
-                    <a href="#" class="block hover:bg-gray-700 px-3 py-3">
+                    <a href="{{ route('music.show',['album' => $result['name'],'artist' => $result['artist']] ) }}" class="block hover:bg-gray-700 px-3 py-3">
                     <img style="width:50px;" src="{{ $result['image'][0]['#text'] }}" class="card-img-top" alt="..."> {{ $result['name'] }}
                     </a>
                 </div>
