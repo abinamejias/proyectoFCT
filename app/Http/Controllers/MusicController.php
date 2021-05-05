@@ -14,7 +14,7 @@ class MusicController extends Controller
      */
     public function index()
     {
-        $topAlbums = Http::get('http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=disco&api_key=915e43bd2c345fdb1aa3e2c00aca0c03&format=json')
+        $topAlbums = Http::get('http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=2020&api_key=915e43bd2c345fdb1aa3e2c00aca0c03&format=json')
         ->json()['albums']['album'];
 
         /*dump($topAlbums);*/
@@ -59,7 +59,7 @@ class MusicController extends Controller
         $album = Http::get('http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=915e43bd2c345fdb1aa3e2c00aca0c03&artist='.$artist.'&album='.$album.'&format=json')
         ->json();
 
-        /*dump($album);*/
+        dump($album);
 
         return view('show', [
             'album' => ($album),

@@ -9,8 +9,6 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
         <link href="/css/main.css" rel="stylesheet">
-
-        <link rel="stylesheet" href="/css/main.css">
         <livewire:styles />
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> 
 
