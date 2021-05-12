@@ -1,6 +1,10 @@
 <?php
 
+use App\Models\Album;
+use App\Models\Playlist;
+use App\Models\Favtrack;
 use App\Http\Controllers\MusicController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,34 +34,19 @@ Route::get('/Registro', function () {
     return view('Registro');
 });
 
-//Playlist oficiales
-Route::get('/NewPop', function () {
-    return view('NewPop');
-});
-
-Route::get('/R&B', function () {
-    return view('R&B');
-});
-
-Route::get('/Indie', function () {
-    return view('Indie');
-});
-
-Route::get('/HipHop', function () {
-    return view('HipHop');
-});
-
-Route::get('/Biblioteca', function () {
-    return view('pagina');
-});
-
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/index', [MusicController::class, 'index'])->name('music.index');
 Route::get('/music/{album}/{artist}', [MusicController::class, 'show'])->name('music.show');
+
+Route::resource('/music-controller', MusicController::class)->names('music.all');
+
+Route::resource('/home-controller', HomeController::class)->names('home.all');
+
+Route::get('/playlist/{id}', [HomeController::class, 'show'])->name('playlist.show');

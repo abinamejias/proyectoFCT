@@ -15,7 +15,24 @@
                         </div>
                     @endif
 
-                    Tus favoritos:
+                    <h1>Tus playlists:</h1>
+                    <form action="{{ route('home.all.store') }}" method="post">
+                    @csrf
+                    <label>Añadir playlist:</label>
+                    <input type="text" name="name" id="name">
+                    <input hidden type="text" name="user_id" id="user_id" value="1">
+                    <button type="submmit" class="btn btn-primary">OK</button>
+                    </form>
+                    @forelse($playlists as $playlistItem)
+                    <p><a href ="{{ route('playlist.show', $playlistItem->id) }}">{{ $playlistItem->name }}</a></p>
+                    @empty
+                    @endforelse
+                    <p>-------------------------------------------------------------</p>
+                    <h1>Tus canciones favoritas:</h1>
+                    @forelse($favtracks as $favtrackItem)
+                    <p>{{ $favtrackItem->name }} {{ $favtrackItem->artist }} {{ $favtrackItem->duration }}</p>
+                    @empty
+                    @endforelse
                 </div>
             </div>
         </div>

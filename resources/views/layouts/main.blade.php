@@ -16,9 +16,9 @@
     </head>
     <div class="container bg-dark fixed top" style="font-family:Play">
         <nav class="navbar navbar-dark bg-dark z-index:1">
-            <a class="navbar-brand" style="color:rgb(255,255,255)" href="http://localhost:8000/index">SPOTIFY DEL CHINO</a>
+            <a class="navbar-brand" style="color:rgb(255,255,255)" href="/index">SPOTIFY DEL CHINO</a>
             <form>
-                <a class="btn btn-outline-success my-2 my-sm-2 " href="http://localhost:8000/home" role="button">SIGN UP</a>
+                <a class="btn btn-outline-success my-2 my-sm-2 " href="/home" role="button">SIGN UP</a>
             </form>
         </nav>
         <form>
