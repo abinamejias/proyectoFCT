@@ -15,6 +15,9 @@ class CreateFavtracksTable extends Migration
     {
         Schema::create('favtracks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')
+                ->references('id')
+                ->on('users');
             $table->string('name');
             $table->string('url');
             $table->string('artist');

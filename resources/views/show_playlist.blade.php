@@ -14,8 +14,6 @@
                     <p style="color:white;">
                     Tracks:
                     @foreach ($favtracks as $favtrackItem)
-                    <form action="{{ route('music.all.store') }}" method="post">
-                    @csrf
                     <p style="color:white;">
                         {{ $favtrackItem->id.'.'.$favtrackItem->name }}
                     <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-square" viewBox="0 0 16 16">
@@ -28,7 +26,6 @@
                     </svg></a>
                     </p>
                     </form>
-                    
                     @endforeach
                     </p>
                 </div>

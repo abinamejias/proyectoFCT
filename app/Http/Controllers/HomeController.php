@@ -43,6 +43,7 @@ class HomeController extends Controller
     {
         $favtracks = DB::table('favtracks')->get();
         $playlistsinfo = Playlist::find($id);
+
         return view('show_playlist', [
             'playlistsinfo' => $playlistsinfo,
             'favtracks' => $favtracks

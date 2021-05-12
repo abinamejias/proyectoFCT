@@ -30,7 +30,9 @@
                     <p>-------------------------------------------------------------</p>
                     <h1>Tus canciones favoritas:</h1>
                     @forelse($favtracks as $favtrackItem)
+                    @if ($favtrackItem->user_id == auth()->id())
                     <p>{{ $favtrackItem->name }} {{ $favtrackItem->artist }} {{ $favtrackItem->duration }}</p>
+                    @endif
                     @empty
                     @endforelse
                 </div>
