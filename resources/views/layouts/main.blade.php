@@ -23,6 +23,7 @@
                 @if ((auth()->id()) == NULL)
                 <a class="btn btn-outline-success my-2 my-sm-2 " href="/home" role="button">SIGN UP</a>
                 @else
+                <a class="btn btn-outline-success my-2 my-sm-2 " href="/home" role="button">TU BIBLIOTECA</a>
                 <button type="submit" class="btn btn-outline-success my-2 my-sm-2 ">LOG OUT</a>
                 @endif
             </form>

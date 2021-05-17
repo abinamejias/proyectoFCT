@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+<body style="background: linear-gradient(90deg, rgba(40,38,83,1) 34%, rgba(51,51,116,1) 75%, rgba(53,88,124,1) 100%); font-family:Play;">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -70,4 +71,5 @@
         </div>
     </div>
 </div>
+</body>
 @endsection

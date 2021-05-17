@@ -64,7 +64,7 @@ class MusicController extends Controller
         $album = Http::get('http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=915e43bd2c345fdb1aa3e2c00aca0c03&artist='.$artist.'&album='.$album.'&format=json')
         ->json();
 
-        /*dump($album);*/
+        dump($album);
 
         $playlists = DB::table('playlists')->get();
         $favtracks = DB::table('favtracks')->get();
