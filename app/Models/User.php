@@ -43,8 +43,4 @@ class User extends \TCG\Voyager\Models\User
     ];
 
     protected $guarded = [];
-    public function users()
-    {
-        return $this->belongsToMany(Favtrack::class);
-    }
 }

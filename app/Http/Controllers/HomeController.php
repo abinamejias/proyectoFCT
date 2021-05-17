@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Playlist;
 use App\Models\Favtrack;
 use DB;
@@ -48,5 +49,15 @@ class HomeController extends Controller
             'playlistsinfo' => $playlistsinfo,
             'favtracks' => $favtracks
         ]);
+    }
+    
+    public function logout(Request $request){
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('index');
     }
 }

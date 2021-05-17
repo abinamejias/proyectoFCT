@@ -11,8 +11,8 @@ class Favtrack extends Model
 
     protected $guarded = [];
 
-    public function favtracks()
+    public function favtrack()
     {
-        return $this->belongsToMany(users::class, 'usersxfavtracks', 'favtracks_id' /* de roles */, 'users_id' /* de modules */);
+        return $this->belongsToMany(Playlist::class);
     }
 }

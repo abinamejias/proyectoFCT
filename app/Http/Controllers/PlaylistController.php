@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\Models\Album;
+use App\Models\Playlist;
+use App\Models\Favtrack;
+use App\Models\FavtrackPlaylist;
+use DB;
 
-class MusicController extends Controller
+class PlaylistController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,8 +47,7 @@ class MusicController extends Controller
      */
     public function store(Request $request)
     {
-        $playlists = Playlist::create($request->all());
-
+        $favtrack_playlists = FavtrackPlaylist::create($request->all());
         return back();
     }
 

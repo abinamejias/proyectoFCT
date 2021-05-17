@@ -17,9 +17,10 @@ class CreateFavtracksTable extends Migration
             $table->id();
             $table->foreignId('user_id')
                 ->references('id')
-                ->on('users');
+                ->on('users')
+                ->onDelete('cascade');
             $table->string('name');
-            $table->string('url');
+            $table->string('url')->unique();
             $table->string('artist');
             $table->string('duration');
             $table->timestamps();

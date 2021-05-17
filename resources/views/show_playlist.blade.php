@@ -7,7 +7,6 @@
         <div class="container mx-auto px-4 py-16 flex flex-col md:flex-row">
             <div class="row">
                 <div class="col">
-                <img src="https://media-exp1.licdn.com/dms/image/C4E03AQGpBySIHPWeLQ/profile-displayphoto-shrink_200_200/0/1516926904653?e=1623283200&v=beta&t=B2cm6Y2PO2SFKyOXnDmWL2ylK4dqYR1_bGFjCe6-hEY">
                 </div>
                 <div class="col">
                     <h1 style="color:white;">{{ $playlistsinfo->name }}</h1>

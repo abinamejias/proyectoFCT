@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Http;
 use App\Models\Album;
 use App\Models\Playlist;
 use App\Models\Favtrack;
+use DB;
 
 class MusicController extends Controller
 {
@@ -46,7 +47,6 @@ class MusicController extends Controller
     public function store(Request $request)
     {
         $favtracks = Favtrack::create($request->all());
-
         return back();
     }
 
@@ -64,10 +64,15 @@ class MusicController extends Controller
         $album = Http::get('http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=915e43bd2c345fdb1aa3e2c00aca0c03&artist='.$artist.'&album='.$album.'&format=json')
         ->json();
 
-        dump($album);
+        /*dump($album);*/
 
-        return view('show', [
+        $playlists = DB::table('playlists')->get();
+        $favtracks = DB::table('favtracks')->get();
+
+        return view('show',[
             'album' => ($album),
+            'playlists' => ($playlists),
+            'favtracks' => ($favtracks),
         ]);
     }
 

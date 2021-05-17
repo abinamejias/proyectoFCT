@@ -3,8 +3,11 @@
 use App\Models\Album;
 use App\Models\Playlist;
 use App\Models\Favtrack;
+use App\Models\FavtrackPlaylist;
 use App\Http\Controllers\MusicController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PlaylistController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,6 +50,10 @@ Route::get('/music/{album}/{artist}', [MusicController::class, 'show'])->name('m
 
 Route::resource('/music-controller', MusicController::class)->names('music.all');
 
+Route::resource('/playlist-controller', PlaylistController::class)->names('playlist.all');
+
 Route::resource('/home-controller', HomeController::class)->names('home.all');
 
 Route::get('/playlist/{id}', [HomeController::class, 'show'])->name('playlist.show');
+
+Route::put('/logout', [HomeController::class, 'logout'])->name('home.logout');

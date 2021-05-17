@@ -24,7 +24,9 @@
                     <button type="submmit" class="btn btn-primary">OK</button>
                     </form>
                     @forelse($playlists as $playlistItem)
+                    @if (($playlistItem->user_id == auth()->id()))
                     <p><a href ="{{ route('playlist.show', $playlistItem->id) }}">{{ $playlistItem->name }}</a></p>
+                    @endif
                     @empty
                     @endforelse
                     <p>-------------------------------------------------------------</p>
