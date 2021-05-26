@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Playlist;
 use App\Models\Favtrack;
+use App\Models\Lastsong;
 use DB;
 
 class HomeController extends Controller
@@ -30,7 +31,9 @@ class HomeController extends Controller
     {
         $favtracks = DB::table('favtracks')->get();
         $playlists = DB::table('playlists')->get();
-        return view('home', compact('favtracks'), compact('playlists'));
+        $lastsongs = DB::table('lastsongs')->get();
+        //dd($lastsongs);
+        return view('home', compact('favtracks'), compact('playlists','lastsongs'));
     }
 
     public function store(Request $request)
@@ -42,11 +45,13 @@ class HomeController extends Controller
 
     public function show($id)
     {
+        $favtrack_playlists = DB::table('favtrack_playlists')->get();
         $favtracks = DB::table('favtracks')->get();
         $playlistsinfo = Playlist::find($id);
 
         return view('show_playlist', [
             'playlistsinfo' => $playlistsinfo,
+            'favtrack_playlists' => $favtrack_playlists,
             'favtracks' => $favtracks
         ]);
     }

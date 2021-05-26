@@ -37,6 +37,15 @@
                     @endif
                     @empty
                     @endforelse
+                    <p>-------------------------------------------------------------</p>
+                    <h1>Última canción escuchada:</h1>
+                    @foreach($lastsongs as $lastsongsItem)
+                    @if ($lastsongsItem->user_id == auth()->id())
+                    @if ($loop->last)
+                    <p>{{ $lastsongsItem->name }}</p>
+                    @endif
+                    @endif
+                    @endforeach
                 </div>
             </div>
         </div>

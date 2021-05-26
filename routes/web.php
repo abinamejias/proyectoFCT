@@ -7,6 +7,8 @@ use App\Models\FavtrackPlaylist;
 use App\Http\Controllers\MusicController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PlaylistController;
+use App\Http\Controllers\ApiController;
+use App\Http\Controllers\LastsongsController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -57,3 +59,12 @@ Route::resource('/home-controller', HomeController::class)->names('home.all');
 Route::get('/playlist/{id}', [HomeController::class, 'show'])->name('playlist.show');
 
 Route::put('/logout', [HomeController::class, 'logout'])->name('home.logout');
+
+Route::get('/apitodb', function () {
+    return view('apitodb');
+});
+Route::get('/apitodb', [ApiController::class, 'index'])->name('apitodb.index');
+
+Route::resource('/apicontroller-controller', ApiController::class)->names('apitodb.all');
+
+Route::resource('/lastsongs-controller', LastsongsController::class)->names('lastsongs.all');

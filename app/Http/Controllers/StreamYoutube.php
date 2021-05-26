@@ -3,14 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
-use App\Models\Album;
-use App\Models\Playlist;
-use App\Models\Favtrack;
-use App\Models\FavtrackPlaylist;
-use DB;
 
-class PlaylistController extends Controller
+class StreamYoutube extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,6 +13,7 @@ class PlaylistController extends Controller
      */
     public function index()
     {
+        //
     }
 
     /**
@@ -39,8 +34,7 @@ class PlaylistController extends Controller
      */
     public function store(Request $request)
     {
-        $favtrack_playlists = FavtrackPlaylist::create($request->all());
-        return back();
+        //
     }
 
     /**
@@ -49,19 +43,8 @@ class PlaylistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($album=null,$artist=null)
-    {
-        if($album == null || $artist == null){
-            abort(403,'La función necesita al menos un album y un artista');
-        }
-        $album = Http::get('http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=915e43bd2c345fdb1aa3e2c00aca0c03&artist='.$artist.'&album='.$album.'&format=json')
-        ->json();
-
-        dump($album);
-
-        return view('show', [
-            'album' => ($album),
-        ]);
+    public function show($id)
+    {    
     }
 
     /**

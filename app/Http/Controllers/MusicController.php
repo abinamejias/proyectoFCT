@@ -20,8 +20,10 @@ class MusicController extends Controller
     {
         $topAlbums = Http::get('http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=2020&api_key=915e43bd2c345fdb1aa3e2c00aca0c03&format=json')
         ->json()['albums']['album'];
+        //$topAlbums = Http::get('http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=cher&api_key=915e43bd2c345fdb1aa3e2c00aca0c03&format=json')
+        //->json();
 
-        /*dump($topAlbums);*/
+        //dd($topAlbums);
         
         return view('index', [
             'topAlbums' => collect($topAlbums)->take(12),
@@ -64,7 +66,18 @@ class MusicController extends Controller
         $album = Http::get('http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=915e43bd2c345fdb1aa3e2c00aca0c03&artist='.$artist.'&album='.$album.'&format=json')
         ->json();
 
-        dump($album);
+        //dump($album);
+        
+        $allStreams = [];
+        foreach($album['album']['tracks']['track'] as $track){
+            $stream = Http::get('https://youtube.googleapis.com/youtube/v3/search?part=snippet&q='.$track['name'].' '.$artist.'&key=AIzaSyCbvj6TTWrsqg0s-ieV1RCedJMuk_cDgEo')
+            ->json()['error']['errors'];
+            //$stream = Http::get('https://youtube.googleapis.com/youtube/v3/search?part=snippet&q='.$track['name'].' '.$artist.'&key=AIzaSyCbvj6TTWrsqg0s-ieV1RCedJMuk_cDgEo')
+            //->json()['items']['id'];
+            $allStreams = array_merge($allStreams, $stream);
+        }   
+
+        dump($allStreams);
 
         $playlists = DB::table('playlists')->get();
         $favtracks = DB::table('favtracks')->get();
@@ -73,6 +86,7 @@ class MusicController extends Controller
             'album' => ($album),
             'playlists' => ($playlists),
             'favtracks' => ($favtracks),
+            'allStreams' => ($allStreams),
         ]);
     }
 
