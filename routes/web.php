@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\LastsongsController;
+use App\Http\Controllers\FollowsController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/users', function () {
+    return view('users');
 });
 
 Route::get('/show', function () {
@@ -68,3 +73,7 @@ Route::get('/apitodb', [ApiController::class, 'index'])->name('apitodb.index');
 Route::resource('/apicontroller-controller', ApiController::class)->names('apitodb.all');
 
 Route::resource('/lastsongs-controller', LastsongsController::class)->names('lastsongs.all');
+
+Route::resource('/follows-controller', FollowsController::class)->names('follows.all');
+
+Route::get('/users', [FollowsController::class, 'index'])->name('users');

@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Playlist;
 use App\Models\Favtrack;
 use App\Models\Lastsong;
+use App\Models\User;
+use App\Models\Follow;
 use DB;
 
 class HomeController extends Controller
@@ -32,8 +34,10 @@ class HomeController extends Controller
         $favtracks = DB::table('favtracks')->get();
         $playlists = DB::table('playlists')->get();
         $lastsongs = DB::table('lastsongs')->get();
+        $users = DB::table('users')->get();
+        $follows = DB::table('follows')->get();
         //dd($lastsongs);
-        return view('home', compact('favtracks'), compact('playlists','lastsongs'));
+        return view('home', compact('favtracks'), compact('playlists','lastsongs','users','follows'));
     }
 
     public function store(Request $request)

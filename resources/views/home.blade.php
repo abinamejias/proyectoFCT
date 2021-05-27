@@ -20,7 +20,7 @@
                     @csrf
                     <label>Añadir playlist:</label>
                     <input type="text" name="name" id="name">
-                    <input hidden type="text" name="user_id" id="user_id" value="1">
+                    <input hidden type="text" name="user_id" id="user_id" value="{{ auth()->id() }}">
                     <button type="submmit" class="btn btn-primary">OK</button>
                     </form>
                     @forelse($playlists as $playlistItem)
@@ -44,6 +44,17 @@
                     @if ($loop->last)
                     <p>{{ $lastsongsItem->name }}</p>
                     @endif
+                    @endif
+                    @endforeach
+                    <p>-------------------------------------------------------------</p>
+                    <h1>Seguidos:</h1>
+                    @foreach($follows as $followsItem)
+                    @if ($followsItem->followinguser_id == auth()->id())
+                    @foreach($users as $usersItem)
+                    @if ($followsItem->followeduser_id==$usersItem->id)
+                    <p>{{ $usersItem->name }}</p>
+                    @endif
+                    @endforeach
                     @endif
                     @endforeach
                 </div>
