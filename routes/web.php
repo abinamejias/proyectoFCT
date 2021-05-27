@@ -10,6 +10,7 @@ use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\LastsongsController;
 use App\Http\Controllers\FollowsController;
+use App\Http\Controllers\GeolocationController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,10 @@ Route::get('/', function () {
 
 Route::get('/users', function () {
     return view('users');
+});
+
+Route::get('/geolocation', function () {
+    return view('geolocation');
 });
 
 Route::get('/show', function () {
@@ -69,6 +74,8 @@ Route::get('/apitodb', function () {
     return view('apitodb');
 });
 Route::get('/apitodb', [ApiController::class, 'index'])->name('apitodb.index');
+
+Route::get('/geolocation', [GeolocationController::class, 'index'])->name('geolocation.index');
 
 Route::resource('/apicontroller-controller', ApiController::class)->names('apitodb.all');
 

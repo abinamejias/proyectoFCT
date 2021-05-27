@@ -26,7 +26,7 @@ class MusicController extends Controller
         //dd($topAlbums);
         
         return view('index', [
-            'topAlbums' => collect($topAlbums)->take(12),
+            'topAlbums' => collect($topAlbums)->take(11),
         ]);
     }
 

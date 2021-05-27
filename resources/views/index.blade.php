@@ -16,6 +16,15 @@
                 </div>
             </div>
             @endforeach
+            <div class="col-3">
+                <div class="card bg-dark">
+                <a href="/geolocation"><img src="https://media.tenor.com/images/fcddc432832e92bbff76e2ed787d45c9/tenor.gif" class="card-img-top" alt="..."></a>
+                <div class="card-body">
+                <a href="/geolocation"><h5 class="card-title" style = "color:white;">RADAR</h5></a>
+                <p class="card-text" style = "color:white;">Explora exitos en tu país</p>
+                </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>

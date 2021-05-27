@@ -9,7 +9,7 @@ use App\Models\Playlist;
 use App\Models\Favtrack;
 use DB;
 
-class ApiController extends Controller
+class GeolocationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,25 +18,20 @@ class ApiController extends Controller
      */
     public function index()
     {
-        $artists = DB::table('artists')->get();
-        $i = 0;
-        foreach ($artists as $artist){//artista por artista
-            $albuminfo = Http::get('http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist='.$artist->name.'&api_key=915e43bd2c345fdb1aa3e2c00aca0c03&format=json')
-            ->json()['topalbums']['album'];
-            $album = Album::create([
-                'name'        => $albuminfo[$i]['name'],
-                'artist'      => $albuminfo[$i]['artist'],
-                'image'       => $albuminfo[$i]['image'][3]['#text'],
-            ]);
-            $i=$i+1;
-        }
-        
-        
+        //get user ip address
+        $ip_address = $_SERVER['REMOTE_ADDR'];
+        //get user ip address details with geoplugin.net
+        $geopluginURL = 'http://www.geoplugin.net/php.gp?id='.$ip_address;
+        $addrDetailsArr = unserialize(file_get_contents($geopluginURL));  
+        //dd($addrDetailsArr['geoplugin_countryName']);
+        $geoAlbums = Http::get('http://ws.audioscrobbler.com/2.0/?method=geo.gettoptracks&country='.$addrDetailsArr['geoplugin_countryName'].'&api_key=915e43bd2c345fdb1aa3e2c00aca0c03&format=json')
+        ->json()['tracks']['track'];
+        dump($geoAlbums);
 
-        //dump($allAlbums);
-        //return view('apitodb', [
-            //'allAlbums' => $allAlbums,
-        //]);
+        return view('geolocation', [
+            'addrDetailsArr' => $addrDetailsArr,
+            'geoAlbums' => collect($geoAlbums)->take(8),
+        ]);
     }
 
     /**
@@ -68,6 +63,7 @@ class ApiController extends Controller
      */
     public function show($id)
     {
+        //
     }
 
     /**
