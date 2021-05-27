@@ -24,38 +24,38 @@
                     <button type="submmit" class="btn btn-primary">OK</button>
                     </form>
                     @forelse($playlists as $playlistItem)
-                    @if (($playlistItem->user_id == auth()->id()))
-                    <p><a href ="{{ route('playlist.show', $playlistItem->id) }}">{{ $playlistItem->name }}</a></p>
-                    @endif
+                        @if (($playlistItem->user_id == auth()->id()))
+                            <p><a href ="{{ route('playlist.show', $playlistItem->id) }}">{{ $playlistItem->name }}</a></p>
+                        @endif
                     @empty
                     @endforelse
                     <p>-------------------------------------------------------------</p>
                     <h1>Tus canciones favoritas:</h1>
                     @forelse($favtracks as $favtrackItem)
-                    @if ($favtrackItem->user_id == auth()->id())
-                    <p>{{ $favtrackItem->name }} {{ $favtrackItem->artist }} {{ $favtrackItem->duration }}</p>
-                    @endif
+                        @if ($favtrackItem->user_id == auth()->id())
+                            <p>{{ $favtrackItem->name }} {{ $favtrackItem->artist }} {{ $favtrackItem->duration }}</p>
+                        @endif
                     @empty
                     @endforelse
                     <p>-------------------------------------------------------------</p>
                     <h1>Última canción escuchada:</h1>
                     @foreach($lastsongs as $lastsongsItem)
-                    @if ($lastsongsItem->user_id == auth()->id())
-                    @if ($loop->last)
-                    <p>{{ $lastsongsItem->name }}</p>
-                    @endif
-                    @endif
+                        @if ($lastsongsItem->user_id == auth()->id())
+                            @if ($loop->last)
+                                <p>{{ $lastsongsItem->name }}</p>
+                            @endif
+                        @endif
                     @endforeach
                     <p>-------------------------------------------------------------</p>
                     <h1>Seguidos:</h1>
                     @foreach($follows as $followsItem)
-                    @if ($followsItem->followinguser_id == auth()->id())
-                    @foreach($users as $usersItem)
-                    @if ($followsItem->followeduser_id==$usersItem->id)
-                    <p>{{ $usersItem->name }}</p>
-                    @endif
-                    @endforeach
-                    @endif
+                        @if ($followsItem->followinguser_id == auth()->id())
+                            @foreach($users as $usersItem)
+                                @if ($followsItem->followeduser_id==$usersItem->id)
+                                    <p>{{ $usersItem->name }}</p>
+                                @endif
+                            @endforeach
+                        @endif
                     @endforeach
                 </div>
             </div>

@@ -14,7 +14,14 @@ class CreateTracksTable extends Migration
     public function up()
     {
         Schema::create('tracks', function (Blueprint $table) {
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_unicode_ci';
             $table->id();
+            $table->string('name');
+            $table->integer('duration')->nullable();
+            $table->foreignId('albums_id')
+                ->references('id')
+                ->on('albums');
             $table->timestamps();
         });
     }

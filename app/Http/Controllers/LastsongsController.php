@@ -36,8 +36,8 @@ class LastsongsController extends Controller
      */
     public function store(Request $request)
     {
-        $lastsongs = Lastsong::create($request->all());
-        return back();
+        //$lastsongs = Lastsong::create($request->all());
+        //return back();
     }
 
     /**

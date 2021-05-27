@@ -60,33 +60,54 @@ class MusicController extends Controller
      */
     public function show($album=null,$artist=null)
     {
-        if($album == null || $artist == null){
+        /*if($album == null || $artist == null){
             abort(403,'La función necesita al menos un album y un artista');
         }
-        $album = Http::get('http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=915e43bd2c345fdb1aa3e2c00aca0c03&artist='.$artist.'&album='.$album.'&format=json')
+        $trackinfo = Http::get('http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=915e43bd2c345fdb1aa3e2c00aca0c03&artist='.$artist.'&album='.$album.'&format=json')
         ->json();
+        dump($trackinfo);*/
 
-        //dump($album);
+        $tracks = array();
+        
+        $albumdata = DB::table('albums')->get();
+        foreach($albumdata as $albumdata){
+            if($albumdata->name==$album){
+                $data=$albumdata;
+                $trackdata = DB::table('tracks')->get();
+                foreach($trackdata as $trackdata){
+                    //dd($data);
+                    if($trackdata->albums_id==$data->id){
+                        array_push($tracks, $trackdata);
+                    }
+                }
+            }
+        }
+        
+
+
+        //dd($album);
         
         $allStreams = [];
-        foreach($album['album']['tracks']['track'] as $track){
-            $stream = Http::get('https://youtube.googleapis.com/youtube/v3/search?part=snippet&q='.$track['name'].' '.$artist.'&key=AIzaSyCbvj6TTWrsqg0s-ieV1RCedJMuk_cDgEo')
-            ->json()['error']['errors'];
+        /*foreach($tracks as $track){
             //$stream = Http::get('https://youtube.googleapis.com/youtube/v3/search?part=snippet&q='.$track['name'].' '.$artist.'&key=AIzaSyCbvj6TTWrsqg0s-ieV1RCedJMuk_cDgEo')
-            //->json()['items']['id'];
-            $allStreams = array_merge($allStreams, $stream);
-        }   
+            //->json()['error']['errors'];
+            $stream = Http::get('https://youtube.googleapis.com/youtube/v3/search?part=snippet&q='.$track->name.' '.$artist.'&key=AIzaSyCbvj6TTWrsqg0s-ieV1RCedJMuk_cDgEo')
+            ->json();
+            dd($stream);
+            array_push($allStreams, $stream);
+        }*/
 
-        dump($allStreams);
+        //dd($allStreams);
 
         $playlists = DB::table('playlists')->get();
         $favtracks = DB::table('favtracks')->get();
 
         return view('show',[
-            'album' => ($album),
+            'tracks' => ($tracks),
+            'data' => ($data),
             'playlists' => ($playlists),
             'favtracks' => ($favtracks),
-            'allStreams' => ($allStreams),
+            //'allStreams' => ($allStreams),
         ]);
     }
 

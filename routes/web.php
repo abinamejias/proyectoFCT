@@ -8,6 +8,7 @@ use App\Http\Controllers\MusicController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\Apicontroller2Controller;
 use App\Http\Controllers\LastsongsController;
 use App\Http\Controllers\FollowsController;
 use App\Http\Controllers\GeolocationController;
@@ -78,8 +79,9 @@ Route::get('/apitodb', [ApiController::class, 'index'])->name('apitodb.index');
 Route::get('/geolocation', [GeolocationController::class, 'index'])->name('geolocation.index');
 
 Route::resource('/apicontroller-controller', ApiController::class)->names('apitodb.all');
+Route::resource('/apicontroller2-controller', Apicontroller2Controller::class)->names('apitodb2.all');
 
-Route::resource('/lastsongs-controller', LastsongsController::class)->names('lastsongs.all');
+//Route::resource('/lastsongs-controller', LastsongsController::class)->names('lastsongs.all');
 
 Route::resource('/follows-controller', FollowsController::class)->names('follows.all');
 

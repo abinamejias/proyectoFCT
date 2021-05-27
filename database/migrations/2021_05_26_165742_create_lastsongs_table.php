@@ -17,6 +17,7 @@ class CreateLastsongsTable extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('user_id')
+                ->nullable()
                 ->references('id')
                 ->on('users');
             $table->timestamps();
